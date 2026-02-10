@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/pages/index.module.css";
 
+//For testing purposes, we will use the default Next.js homepage. You can replace this with your own content as needed.
 export default function Home() {
   return (
     <div className={styles.container}>

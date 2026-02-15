@@ -1,5 +1,5 @@
 
-name: Integration
+name: integration
 
 on:
   push:
@@ -8,44 +8,45 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build: 
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-
+    strategy:                   #strategy allows us to define a matrix of different configurations for our job
+      matrix:                   #matrix allows us to run the same job with different parameters
+        node-version: [18.x]
+        
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: "Installing Dependencies"
-      run: npm i
+    - name: "installing dependencies and building the project"
+      run: npm install
 
-    - name: "Build command"
-      run: npm run build
+    - name : "build command"
+      run : npm run build 
 
   unit-tests:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-
+    strategy:                   #strategy allows us to define a matrix of different configurations for our job
+      matrix:                   #matrix allows us to run the same job with different parameters
+        node-version: [18.x]
+        
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: "Installing Dependencies"
-      run: npm i
+    - name: "installing dependencies and building the project"
+      run: npm install
 
-    - name: "Running test cases"
-      run: npm run test
+    - name : "testing command"
+      run : npm run test
+    

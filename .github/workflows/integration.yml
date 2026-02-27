@@ -1,33 +1,35 @@
 
-name: Integration
+name: Integrate  #give name accroding to task u going to perform
 
-on:
+on: # on triggering pull_request do the jobs
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main" ] #if pull request is raised on main branch then first perform the jobs
 
-jobs:
-  build:
+jobs: 
+  build:    #before merging with main 1st prepare the build.  
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  #this will run on virtual machine(Github server) we just need to specify it
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [18.x, 20.x, 22.x] #specify on which node versions u want to run yourapp
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    steps: #these are the steps that github has to do in order to execute build job
+    - uses: actions/checkout@v4 #it tells github to checkout to current branch cause by default it will be on main branch
+    - name: Use Node.js ${{ matrix.node-version }} 
+      uses: actions/setup-node@v3 #setup the node to reun app
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ matrix.node-version }} #it is telling github on which node versions to run app and that versions are specified above in strategy
         cache: 'npm'
     - name: "Installing Dependencies"
-      run: npm i
+      run: npm i #this will tell github actions to run dependencies these dependies are 
+      # defined inside the package.json in app code already
 
     - name: "Build command"
-      run: npm run build
+      run: npm run build #this will run build and these keyword i am using like build are
+      # already defined in the package.json
 
   unit-tests:
 
@@ -48,4 +50,4 @@ jobs:
       run: npm i
 
     - name: "Running test cases"
-      run: npm run test
+      run: npm run test 

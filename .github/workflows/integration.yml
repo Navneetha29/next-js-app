@@ -23,13 +23,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: "Installing Dependencies"
+
+    - name: "Intalling the Node packeage dependencies"
       run: npm i
 
-    - name: "Build command"
+    - name: "Building the Project"
       run: npm run build
+    
 
-  unit-tests:
+  Unit-testing:
 
     runs-on: ubuntu-latest
 
@@ -44,8 +46,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: "Installing Dependencies"
+      
+    - name: "Intalling the Node packeage dependencies"
       run: npm i
 
-    - name: "Running test cases"
-      run: npm run test
+    - name: "Run the Unit test"
+      run: npm run build

@@ -17,9 +17,9 @@ jobs:
         node-version: [18.x, 20.x, 22.x]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4  # check out to current branch 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v3 # setup node environment for current job
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -29,7 +29,8 @@ jobs:
     - name: "Build command"
       run: npm run build
 
-  unit-tests:
+  unit-tests: 
+  
 
     runs-on: ubuntu-latest
 

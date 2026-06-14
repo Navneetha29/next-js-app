@@ -1,33 +1,33 @@
 
-name: Integration
+name: Integration #the name of the file
 
-on:
+on:  #on which events should these jobs trigger
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ "main" ]  # event push on this target branch
+  pull_request: 
+    branches: [ "main" ] # PR event on this target branch
 
-jobs:
-  build:
+jobs:  # the jobs to run
+  build:   # a build job
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # the server on which the jobs will be runing on github servers
 
-    strategy:
+    strategy: 
       matrix:
         node-version: [18.x, 20.x, 22.x]
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: "Installing Dependencies"
-      run: npm i
+    steps: # the steps that github has to do in order to run the build job
+    - uses: actions/checkout@v4 # checkeout to the current branch (feature branch)
+    - name: Use Node.js ${{ matrix.node-version }}  # the name of the step (optional)
+      uses: actions/setup-node@v3 # steup the node env before doing anything else with the project
+      with: 
+        node-version: ${{ matrix.node-version }} # setup the node with different node versions (run my code on diff versions of nodejs)
+        cache: 'npm' # the way to handle the packages
+    - name: "Installing Dependencies" 
+      run: npm i # as the name suggests, here we install the dependencies
 
     - name: "Build command"
-      run: npm run build
+      run: npm run build # build the app
 
   unit-tests:
 

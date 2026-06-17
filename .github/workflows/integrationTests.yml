@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main" ] 
 
 jobs:
   build:
@@ -15,19 +15,21 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
+      
 
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: "Installing Dependencies"
       run: npm i
 
-    - name: "Build command"
+    - name: "Build Command"
       run: npm run build
+
 
   unit-tests:
 
@@ -36,11 +38,12 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
+      
 
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -49,3 +52,5 @@ jobs:
 
     - name: "Running test cases"
       run: npm run test
+   
+

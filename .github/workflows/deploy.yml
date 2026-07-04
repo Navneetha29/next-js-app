@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  deploy:
+  deploy1:
 
     runs-on: ubuntu-latest
 

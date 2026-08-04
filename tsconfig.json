@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "types": ["@testing-library/jest-dom"],
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],

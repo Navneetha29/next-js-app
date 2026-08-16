@@ -2,9 +2,9 @@ name: Integraion Process
 
 on: 
   push: 
-    branches: [ "second" ]
+    branches: [ "main" ]
   pull:
-    branches: [ "second" ]
+    branches: [ "main" ]
 
 job: 
 
